@@ -22,13 +22,28 @@ const MainLayout: React.FC = () => {
     return (
         <div className="min-h-screen flex flex-col bg-gray-50">
             <Header />
+            <div className="w-full bg-white border-b border-gray-200 px-4">
+                {showProcessing && (
+                    <div className="max-w-7xl mx-auto py-4">
+                        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 w-full">
+                            <p className="text-gray-700 text-sm">{query}</p>
+                            <button 
+                                onClick={() => window.location.reload()} 
+                                className="text-gray-500 hover:text-gray-700 text-sm mt-2 underline"
+                            >
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+                )}
+            </div>
             <main className="flex-grow flex container mx-auto px-4 py-8 max-w-7xl">
                 {showProcessing && (
                     <div className="w-1/4 pr-8">
                         <SourcesSidebar sources={mockSources} />
                     </div>
                 )}
-                <div className={`flex-grow flex flex-col items-center ${showProcessing ? 'w-full' : 'w-full max-w-2xl mx-auto'}`}>
+                <div className={`flex-grow flex flex-col items-center ${showProcessing ? 'w-3/4' : 'w-full max-w-2xl mx-auto'}`}>
                     {!showProcessing ? (
                         <>
                             <div className="text-center mb-8">

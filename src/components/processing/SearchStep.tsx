@@ -46,51 +46,47 @@ const SearchStep: React.FC<SearchStepProps> = ({ isActive, isCompleted, data, is
 
     return (
         <div className="relative pb-8">
-            {!isCompleted && (
-                <div className="absolute left-3 top-7 bottom-0 w-0.5 bg-gray-300" />
-            )}
-            <div className="relative">
-                <div
-                    className="flex items-center cursor-pointer group mb-2"
-                    onClick={() => setIsExpanded(!isExpanded)}
-                >
-                    <div className="flex items-center flex-grow">
-                        {renderStepIndicator()}
-                        <div className="ml-4 flex items-center">
-                            <div className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
-                                Search
-                            </div>
-                            <h3 className="ml-3 text-gray-900 font-medium">
-                                {data.title}
-                            </h3>
+            <div className="absolute left-3 top-10 bottom-0 w-0.5 bg-gray-300" />
+            <div className="relative flex items-start">
+                {renderStepIndicator()}
+                <div className="ml-4 flex-1">
+                    <div 
+                        className="flex items-center cursor-pointer group"
+                        onClick={() => setIsExpanded(!isExpanded)}
+                    >
+                        <div className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
+                            Search
                         </div>
+                        <h3 className="ml-3 text-gray-900 font-medium flex-1">
+                            {data.title}
+                        </h3>
+                        <button className="text-gray-400 hover:text-gray-600">
+                            {isExpanded ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                        </button>
                     </div>
-                    <button className="text-gray-400 hover:text-gray-600">
-                        {isExpanded ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                    </button>
-                </div>
 
-                {isExpanded && (
-                    <div className="mt-2 ml-3 pl-1">
-                        <div className="text-gray-500 text-sm mb-2">Searching</div>
-                        <div className="flex items-center bg-gray-50 p-3 rounded-lg mb-3">
-                            <SearchIcon className="text-gray-400 w-5 h-5 mr-2" />
-                            <span className="text-gray-700 text-sm">{data.query}</span>
+                    {isExpanded && (
+                        <div className="mt-4">
+                            <div className="text-gray-500 text-sm mb-2">Searching</div>
+                            <div className="flex items-center bg-gray-50 p-3 rounded-lg mb-3">
+                                <SearchIcon className="text-gray-400 w-5 h-5 mr-2" />
+                                <span className="text-gray-700 text-sm">{data.query}</span>
+                            </div>
+                            <div className="text-gray-500 text-sm mb-2">Reading...</div>
+                            <div className="flex flex-wrap gap-2">
+                                {data.sources.map((source, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex items-center bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm"
+                                    >
+                                        <span className="w-2 h-2 bg-gray-400 rounded-full mr-2" />
+                                        {source}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                        <div className="text-gray-500 text-sm mb-2">Reading...</div>
-                        <div className="flex flex-wrap gap-2">
-                            {data.sources.map((source, index) => (
-                                <div
-                                    key={index}
-                                    className="flex items-center bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm"
-                                >
-                                    <span className="w-2 h-2 bg-gray-400 rounded-full mr-2" />
-                                    {source}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
         </div>
     );

@@ -45,37 +45,33 @@ const ConsolidateStep: React.FC<ConsolidateStepProps> = ({ isActive, isCompleted
 
     return (
         <div className="relative pb-8">
-            {isActive && !isCompleted && (
-                <div className="absolute left-3 top-7 bottom-0 w-0.5 bg-gray-300" />
-            )}
-            <div className="relative">
-                <div
-                    className="flex items-center cursor-pointer group mb-2"
-                    onClick={() => setIsExpanded(!isExpanded)}
-                >
-                    <div className="flex items-center flex-grow">
-                        {renderStepIndicator()}
-                        <div className="ml-4 flex items-center">
-                            <div className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
-                                Consolidate
-                            </div>
-                            <h3 className="ml-3 text-gray-900 font-medium">
-                                {data.title}
-                            </h3>
+            <div className="absolute left-3 top-10 bottom-0 w-0.5 bg-gray-300" />
+            <div className="relative flex items-start">
+                {renderStepIndicator()}
+                <div className="ml-4 flex-1">
+                    <div 
+                        className="flex items-center cursor-pointer group"
+                        onClick={() => setIsExpanded(!isExpanded)}
+                    >
+                        <div className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
+                            Consolidate
                         </div>
+                        <h3 className="ml-3 text-gray-900 font-medium flex-1">
+                            {data.title}
+                        </h3>
+                        <button className="text-gray-400 hover:text-gray-600">
+                            {isExpanded ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                        </button>
                     </div>
-                    <button className="text-gray-400 hover:text-gray-600">
-                        {isExpanded ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                    </button>
-                </div>
 
-                {isExpanded && isActive && (
-                    <div className="mt-2 ml-3 pl-1">
-                        <div className="text-cyan-500">
-                            <TypingIndicator text="Summarising Findings..." speed={100} />
+                    {isExpanded && isActive && (
+                        <div className="mt-4">
+                            <div className="text-cyan-500">
+                                <TypingIndicator text="Summarising Findings..." speed={100} />
+                            </div>
                         </div>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
         </div>
     );
