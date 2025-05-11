@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #F0F4F8;
+    /* Matching the light gray/blue background of the app */
+    color: #1E293B;
+}
