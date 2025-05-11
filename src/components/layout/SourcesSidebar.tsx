@@ -1,11 +1,11 @@
 import React from 'react';
-import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined'; // For PDF
-import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined'; // For Web
+import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
+import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 
 interface Source {
     name: string;
     type: 'pdf' | 'web';
-    path: string; // URL or path to the source
+    path: string;
 }
 
 interface SourcesSidebarProps {
@@ -14,7 +14,7 @@ interface SourcesSidebarProps {
 
 const SourcesSidebar: React.FC<SourcesSidebarProps> = ({ sources }) => {
     return (
-        <div className="bg-white p-4 rounded-lg h-full">
+        <div className="bg-white p-4 rounded-lg sticky top-4">
             <h2 className="text-lg font-semibold text-text-primary mb-4">Sources</h2>
             <ul className="space-y-3">
                 {sources.map((source, index) => (
@@ -40,4 +40,4 @@ const SourcesSidebar: React.FC<SourcesSidebarProps> = ({ sources }) => {
     );
 };
 
-export default SourcesSidebar; 
+export default SourcesSidebar;

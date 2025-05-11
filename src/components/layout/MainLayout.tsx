@@ -37,13 +37,13 @@ const MainLayout: React.FC = () => {
                     </div>
                 )}
             </div>
-            <main className="flex-grow flex container mx-auto px-4 py-8 max-w-7xl">
+            <main className="flex-grow flex flex-col lg:flex-row container mx-auto px-4 md:px-8 py-8 max-w-7xl gap-8">
                 {showProcessing && (
-                    <div className="w-1/4 pr-8">
+                    <div className="w-full lg:w-1/4 order-2 lg:order-1">
                         <SourcesSidebar sources={mockSources} />
                     </div>
                 )}
-                <div className={`flex-grow flex flex-col items-center ${showProcessing ? 'w-3/4' : 'w-full max-w-2xl mx-auto'}`}>
+                <div className={`flex-grow flex flex-col items-center order-1 lg:order-2 ${showProcessing ? 'w-full lg:w-3/4' : 'w-full max-w-2xl mx-auto'}`}>
                     {!showProcessing ? (
                         <>
                             <div className="text-center mb-8">
